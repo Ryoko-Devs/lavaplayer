@@ -370,6 +370,11 @@ public class Mp3TrackProvider implements AudioTrackInfoProvider {
         return null;
     }
 
+    @Override
+    public Boolean getIsTrackUnavailable() {
+        return false;
+    }
+
     private static class FrameHeader {
         private final String id;
         private final int size;

@@ -246,7 +246,8 @@ public class DefaultAudioPlayerManager implements AudioPlayerManager {
             input.readBoolean(),
             version >= 2 ? DataFormatTools.readNullableText(input) : null,
             version >= 3 ? DataFormatTools.readNullableText(input) : null,
-            version >= 3 ? DataFormatTools.readNullableText(input) : null
+            version >= 3 ? DataFormatTools.readNullableText(input) : null,
+            input.readBoolean()
         );
         AudioTrack track = decodeTrackDetails(trackInfo, input);
         long position = input.readLong();

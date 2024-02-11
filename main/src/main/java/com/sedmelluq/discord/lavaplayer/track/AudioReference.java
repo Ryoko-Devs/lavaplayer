@@ -75,4 +75,9 @@ public class AudioReference implements AudioItem, AudioTrackInfoProvider {
     public String getISRC() {
         return null;
     }
+
+    @Override
+    public Boolean getIsTrackUnavailable() {
+        return false;
+    }
 }
