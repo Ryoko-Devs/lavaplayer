@@ -19,7 +19,8 @@ public class DefaultYandexMusicPlaylistLoader extends DefaultYandexMusicTrackLoa
 
     private final ExecutorService tracksLoader;
 
-    public DefaultYandexMusicPlaylistLoader() {
+    public DefaultYandexMusicPlaylistLoader(String token) {
+        super(token);
         tracksLoader = Executors.newCachedThreadPool();
     }
 

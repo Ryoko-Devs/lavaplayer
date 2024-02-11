@@ -68,17 +68,19 @@ public class YandexMusicAudioSourceManager implements AudioSourceManager, HttpCo
     private final YandexMusicPlaylistLoader playlistLoader;
     private final YandexMusicSearchResultLoader searchResultLoader;
 
-    public YandexMusicAudioSourceManager() {
-        this(true);
+    public YandexMusicAudioSourceManager(String token) {
+        this(token,true);
     }
 
-    public YandexMusicAudioSourceManager(boolean allowSearch) {
+
+    public YandexMusicAudioSourceManager(String token, boolean allowSearch) {
         this(
             allowSearch,
-            new DefaultYandexMusicTrackLoader(),
-            new DefaultYandexMusicPlaylistLoader(),
-            new DefaultYandexMusicDirectUrlLoader(),
-            new DefaultYandexSearchProvider()
+            token,
+            new DefaultYandexMusicTrackLoader(token),
+            new DefaultYandexMusicPlaylistLoader(token),
+            new DefaultYandexMusicDirectUrlLoader(token),
+            new DefaultYandexSearchProvider(token)
         );
     }
 
@@ -87,6 +89,7 @@ public class YandexMusicAudioSourceManager implements AudioSourceManager, HttpCo
      */
     public YandexMusicAudioSourceManager(
         boolean allowSearch,
+        String token,
         YandexMusicTrackLoader trackLoader,
         YandexMusicPlaylistLoader playlistLoader,
         YandexMusicDirectUrlLoader directUrlLoader,
@@ -98,7 +101,7 @@ public class YandexMusicAudioSourceManager implements AudioSourceManager, HttpCo
         this.searchResultLoader = searchResultLoader;
 
         httpInterfaceManager = HttpClientTools.createDefaultThreadLocalManager();
-        httpInterfaceManager.setHttpContextFilter(new YandexHttpContextFilter());
+        httpInterfaceManager.setHttpContextFilter(new YandexHttpContextFilter(token));
 
         combinedHttpConfiguration = new MultiHttpConfigurable(Arrays.asList(
             httpInterfaceManager,

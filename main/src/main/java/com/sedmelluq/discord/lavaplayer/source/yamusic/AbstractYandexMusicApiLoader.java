@@ -21,9 +21,9 @@ public abstract class AbstractYandexMusicApiLoader implements YandexMusicApiLoad
 
     protected HttpInterfaceManager httpInterfaceManager;
 
-    AbstractYandexMusicApiLoader() {
+    AbstractYandexMusicApiLoader(String token) {
         httpInterfaceManager = HttpClientTools.createDefaultThreadLocalManager();
-        httpInterfaceManager.setHttpContextFilter(new YandexHttpContextFilter());
+        httpInterfaceManager.setHttpContextFilter(new YandexHttpContextFilter(token));
     }
 
     protected <T> T extractFromApi(String url, ApiExtractor<T> extractor) {

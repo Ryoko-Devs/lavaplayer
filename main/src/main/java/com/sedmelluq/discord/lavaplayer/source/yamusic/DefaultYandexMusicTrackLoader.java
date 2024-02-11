@@ -12,6 +12,10 @@ public class DefaultYandexMusicTrackLoader extends AbstractYandexMusicApiLoader 
 
     private static final String TRACKS_INFO_FORMAT = "https://api.music.yandex.net/tracks?trackIds=";
 
+    DefaultYandexMusicTrackLoader(String token) {
+        super(token);
+    }
+
     @Override
     public AudioItem loadTrack(String albumId, String trackId, Function<AudioTrackInfo, AudioTrack> trackFactory) {
         StringBuilder id = new StringBuilder(trackId);

@@ -9,10 +9,10 @@ import org.apache.http.impl.client.BasicCookieStore;
 
 public class YandexHttpContextFilter implements HttpContextFilter {
 
-    private static String oAuthToken = null;
+    private String oAuthToken = null;
 
-    public static void setOAuthToken(String value) {
-        oAuthToken = value;
+    public YandexHttpContextFilter(String token) {
+        this.oAuthToken = token;
     }
 
     @Override

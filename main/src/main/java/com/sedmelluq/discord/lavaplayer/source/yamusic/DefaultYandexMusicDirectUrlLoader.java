@@ -22,6 +22,10 @@ public class DefaultYandexMusicDirectUrlLoader extends AbstractYandexMusicApiLoa
     private static final String DIRECT_URL_FORMAT = "https://%s/get-%s/%s/%s%s";
     private static final String MP3_SALT = "XGRlBW9FXlekgbPrRHuSiA";
 
+    DefaultYandexMusicDirectUrlLoader(String token) {
+        super(token);
+    }
+
     @Override
     public String getDirectUrl(String trackId, String codec) {
         return extractFromApi(String.format(TRACK_DOWNLOAD_INFO, trackId), (httpClient, codecsList) -> {

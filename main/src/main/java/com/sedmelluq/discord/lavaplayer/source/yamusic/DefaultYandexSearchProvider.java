@@ -22,6 +22,10 @@ public class DefaultYandexSearchProvider extends AbstractYandexMusicApiLoader im
 
     private static final Pattern SEARCH_PATTERN = Pattern.compile("ymsearch(:([a-zA-Z]+))?(:([0-9]+))?:([^:]+)");
 
+    DefaultYandexSearchProvider(String token) {
+        super(token);
+    }
+
     @Override
     public AudioItem loadSearchResult(String query, YandexMusicPlaylistLoader playlistLoader, Function<AudioTrackInfo, AudioTrack> trackFactory) {
         if (query == null || !query.startsWith(SEARCH_PREFIX)) {
