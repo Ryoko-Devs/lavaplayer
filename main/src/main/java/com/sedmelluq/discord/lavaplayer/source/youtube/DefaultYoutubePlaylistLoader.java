@@ -172,7 +172,7 @@ public class DefaultYoutubePlaylistLoader implements YoutubePlaylistLoader {
                 long duration = Units.secondsToMillis(lengthSeconds.asLong(Units.DURATION_SEC_UNKNOWN));
 
                 AudioTrackInfo info = new AudioTrackInfo(title, author, duration, videoId, false,
-                    WATCH_URL_PREFIX + videoId, ThumbnailTools.getYouTubeThumbnail(item, videoId), null);
+                    WATCH_URL_PREFIX + videoId, ThumbnailTools.getYouTubeThumbnail(item, videoId), null, false);
 
                 tracks.add(trackFactory.apply(info));
             }

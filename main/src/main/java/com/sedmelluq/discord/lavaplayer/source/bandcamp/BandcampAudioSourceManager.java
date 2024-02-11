@@ -109,16 +109,20 @@ public class BandcampAudioSourceManager implements AudioSourceManager, HttpConfi
     private AudioTrack extractTrack(JsonBrowser trackInfo, String bandUrl, String artist, String artworkUrl) {
         String trackPageUrl = bandUrl + trackInfo.get("title_link").text();
 
-        return new BandcampAudioTrack(new AudioTrackInfo(
-            trackInfo.get("title").text(),
-            artist,
-            (long) (trackInfo.get("duration").as(Double.class) * 1000.0),
-            bandUrl + trackInfo.get("title_link").text(),
-            false,
-            trackPageUrl,
-            artworkUrl,
-            null
-        ), this);
+        return new BandcampAudioTrack(
+            new AudioTrackInfo(
+                trackInfo.get("title").text(),
+                artist,
+                (long) (trackInfo.get("duration").as(Double.class) * 1000.0),
+                bandUrl + trackInfo.get("title_link").text(),
+                false,
+                trackPageUrl,
+                artworkUrl,
+                null,
+                false
+            ),
+            this
+        );
     }
 
     private JsonBrowser readAlbumInformation(String text) throws IOException {
@@ -168,7 +172,6 @@ public class BandcampAudioSourceManager implements AudioSourceManager, HttpConfi
 
         return extractor.extract(httpInterface, responseText);
     }
-
     private String extractArtwork(JsonBrowser root) {
         String artId = root.get("art_id").text();
         if (artId != null) {

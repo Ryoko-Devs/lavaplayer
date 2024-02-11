@@ -159,7 +159,7 @@ public class YoutubeSearchMusicProvider implements YoutubeSearchMusicResultLoade
         long duration = DataFormatTools.durationTextToMillis(lastElement.get("text").text());
 
         AudioTrackInfo info = new AudioTrackInfo(title, author, duration, videoId, false,
-            WATCH_URL_PREFIX + videoId, ThumbnailTools.getYouTubeMusicThumbnail(thumbnail, videoId), null);
+            WATCH_URL_PREFIX + videoId, ThumbnailTools.getYouTubeMusicThumbnail(thumbnail, videoId), null, false);
 
         return trackFactory.apply(info);
     }

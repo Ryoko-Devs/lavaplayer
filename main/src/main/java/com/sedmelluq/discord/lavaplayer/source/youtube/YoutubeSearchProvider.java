@@ -119,7 +119,7 @@ public class YoutubeSearchProvider implements YoutubeSearchResultLoader {
         String videoId = json.get("videoId").text();
 
         AudioTrackInfo info = new AudioTrackInfo(title, author, duration, videoId, false,
-            WATCH_URL_PREFIX + videoId, ThumbnailTools.getYouTubeThumbnail(json, videoId), null);
+            WATCH_URL_PREFIX + videoId, ThumbnailTools.getYouTubeThumbnail(json, videoId), null, false);
 
         return trackFactory.apply(info);
     }
