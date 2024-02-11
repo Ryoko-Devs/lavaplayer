@@ -15,12 +15,14 @@ public interface AudioTrackInfoProvider {
     String getAuthor();
 
     /**
-     * @return Track length in milliseconds, or <code>null</code> if this provider does not know it.
+     * @return Track length in milliseconds, or <code>null</code> if this provider
+     *         does not know it.
      */
     Long getLength();
 
     /**
-     * @return Track identifier, or <code>null</code> if this provider does not know it.
+     * @return Track identifier, or <code>null</code> if this provider does not know
+     *         it.
      */
     String getIdentifier();
 
@@ -32,4 +34,6 @@ public interface AudioTrackInfoProvider {
     String getArtworkUrl();
 
     String getISRC();
+
+    Boolean getIsTrackUnavailable();
 }

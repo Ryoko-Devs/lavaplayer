@@ -24,7 +24,7 @@ public class DefaultSoundCloudDataReader implements SoundCloudDataReader {
 
     @Override
     public boolean isTrackBlocked(JsonBrowser trackData) {
-        return "BLOCK".equals(trackData.get("policy").safeText());
+        return !"ALLOW".equals(trackData.get("policy").safeText());
     }
 
     @Override
@@ -37,7 +37,8 @@ public class DefaultSoundCloudDataReader implements SoundCloudDataReader {
             false,
             trackData.get("permalink_url").text(),
             ThumbnailTools.getSoundCloudThumbnail(trackData),
-            trackData.get("publisher_metadata").get("isrc").text()
+            trackData.get("publisher_metadata").get("isrc").text(),
+            isTrackBlocked(trackData)
         );
     }
 
